@@ -1,0 +1,6 @@
+@MetaenlaceCitaClinica_HostAddress = http://localhost:5062
+
+GET {{MetaenlaceCitaClinica_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
