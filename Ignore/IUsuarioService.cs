@@ -1,7 +1,7 @@
 ﻿using MetaenlaceCitaClinica.Models.DTOs;
 using MetaenlaceCitaClinica.Models.Entity;
 
-namespace MetaenlaceCitaClinica.Services.Impl
+namespace MetaenlaceCitaClinica.Ignore
 {
     public interface IUsuarioService
     {

@@ -1,5 +1,5 @@
-﻿using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
-using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
+﻿using MetaenlaceCitaClinica.Models.DTOs;
+using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
 using MetaenlaceCitaClinica.Models.Entity;
 
 namespace MetaenlaceCitaClinica.Services.Impl

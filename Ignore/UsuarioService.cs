@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using MetaenlaceCitaClinica.Models.DTOs;
 using MetaenlaceCitaClinica.Models.Entity;
 using MetaenlaceCitaClinica.Repository;
@@ -6,7 +6,7 @@ using MetaenlaceCitaClinica.Repository.Impl;
 using MetaenlaceCitaClinica.Services.Impl;
 using System.Threading.Tasks;
 
-namespace MetaenlaceCitaClinica.Services
+namespace MetaenlaceCitaClinica.Ignore
 {
     public class UsuarioService : IUsuarioService
     {
@@ -56,7 +56,7 @@ namespace MetaenlaceCitaClinica.Services
         public async Task<IEnumerable<UsuarioDTO>> ObtenerTodosUsuarios()
         {
             var usuarios = await _unitOfWork.Usuarios.ObtenerListaDeUsuario();
-            var usuariosDTO =  _mapper.Map<IEnumerable<Usuario>, IEnumerable<UsuarioDTO>>(usuarios);
+            var usuariosDTO = _mapper.Map<IEnumerable<Usuario>, IEnumerable<UsuarioDTO>>(usuarios);
             return usuariosDTO;
         }
 
@@ -69,4 +69,4 @@ namespace MetaenlaceCitaClinica.Services
             return usuarioDTO;
         }
     }
-}
+}*/

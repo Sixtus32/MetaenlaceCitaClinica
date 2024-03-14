@@ -36,8 +36,20 @@ namespace MetaenlaceCitaClinica.Repository
         {
             try
             {
-                Medico? medico = await _medicoSet.FindAsync(id);
-                return medico ?? throw new Exception($"No se encontró un médico con el ID {id}.");
+                Medico? medico = await _medicoSet
+                    .Include(p => p.Citas)
+                        .ThenInclude(c => c.Diagnostico)
+                    .FirstOrDefaultAsync(p => p.UsuarioID == id);
+                if (medico == null)
+                    throw new Exception($"No se encontró un médico con el ID {id}.");
+
+                // Cargar explícitamente las citas asociadas
+                await _context.Entry(medico)
+                    .Collection(p => p.Citas)
+                        .Query()
+                        .Include(c => c.Diagnostico)
+                    .LoadAsync();
+                return medico;
             }
             catch (Exception ex)
             {
@@ -48,7 +60,11 @@ namespace MetaenlaceCitaClinica.Repository
         // Repo.    Listar Medico
         public async Task<IEnumerable<Medico>> ObtenerMedicos()
         {
-            return await _medicoSet.ToListAsync();
+            var medicos = await _medicoSet
+                .Include(p => p.Citas)
+                    .ThenInclude(c => c.Diagnostico)
+                .ToListAsync();
+            return medicos;
         }
 
         // Repo.    Crear Medico

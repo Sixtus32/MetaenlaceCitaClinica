@@ -9,7 +9,7 @@ namespace MetaenlaceCitaClinica.Repository
 {
     public interface IUnitOfWork : IDisposable
     {
-        IUsuarioRepository Usuarios { get; }
+        //IUsuarioRepository Usuarios { get; }
         IPacienteRepository Pacientes { get; }
         IMedicoRepository Medicos { get; }
         ICitaRepository Citas { get; }
@@ -27,14 +27,14 @@ namespace MetaenlaceCitaClinica.Repository
             Pacientes = new PacienteRepository(_context);
             Medicos = new MedicoRepository(_context);
             Citas = new CitaRepository(_context);
-            Usuarios = new UsuarioRepository(_context);
+            //Usuarios = new UsuarioRepository(_context);
             Diagnosticos = new DiagnosticoRepository(_context);
         }
 
         public IPacienteRepository Pacientes { get; }
         public IMedicoRepository Medicos { get; }
         public ICitaRepository Citas { get; }
-        public IUsuarioRepository Usuarios { get; }
+        //public IUsuarioRepository Usuarios { get; }
         public IDiagnosticoRepository Diagnosticos { get; }
 
         public void Dispose()

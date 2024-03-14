@@ -9,9 +9,7 @@ namespace MetaenlaceCitaClinica.Models.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CitaID { get; set; }
 
-        // Otras atributos de la cita
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        // Otros atributos de la cita
         [Display(Name = "FECHA Y HORA")]
         public DateTime? FechaHora { get; set; }
 
@@ -20,7 +18,6 @@ namespace MetaenlaceCitaClinica.Models.Entity
         [Display(Name = "MOTIVO DE LA CITA")]
         public string? MotivoCita { get; set; }
 
-        
         [Display(Name = "Nº COLEGIADO")]
         public int? Attribute11 { get; set; }
 
@@ -33,6 +30,6 @@ namespace MetaenlaceCitaClinica.Models.Entity
         public virtual Medico? Medico { get; set; }
 
         // Relación uno a uno con Diagnostico
-        public virtual Diagnostico? Diagnostico { get; set; } // relación uno a uno
+        public virtual Diagnostico? Diagnostico { get; set; } // Relación uno a uno
     }
 }

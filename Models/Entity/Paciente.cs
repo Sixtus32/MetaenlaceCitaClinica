@@ -26,7 +26,7 @@ namespace MetaenlaceCitaClinica.Models.Entity
         public string? Direccion { get; set; }
 
         // Atributos
-        public virtual ICollection<Cita>? Citas { get; set; }
-        public virtual ICollection<MedicoPaciente>? Medicos { get;  set; }
+        public virtual ICollection<Cita> Citas { get; set; }
+        public virtual ICollection<MedicoPaciente> Medicos { get;  set; }
     }
 }

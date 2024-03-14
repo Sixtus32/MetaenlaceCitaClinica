@@ -9,6 +9,7 @@ namespace MetaenlaceCitaClinica.Repository
     {
         private readonly DbSet<Paciente> _pacienteSet;
         private readonly CitaClinicaDataContext _context;
+        private object c;
 
         public PacienteRepository(CitaClinicaDataContext context)
         {
@@ -42,7 +43,17 @@ namespace MetaenlaceCitaClinica.Repository
         {
             try
             {
-                Paciente? paciente = await _pacienteSet.FindAsync(id);
+                Paciente? paciente = await _pacienteSet
+                    .Include(p => p.Citas)
+                        .ThenInclude(c => c.Diagnostico)
+                    .FirstOrDefaultAsync(p => p.UsuarioID == id);
+
+                // Cargar explicitamente las citas asociadas
+                await _context.Entry(paciente)
+                    .Collection(p => p.Citas)
+                        .Query()
+                        .Include(c => c.Diagnostico)
+                    .LoadAsync();
                 return paciente ?? throw new Exception($"No se encontró un paciente con el ID {id}.");
             }
             catch (Exception ex)
@@ -54,7 +65,10 @@ namespace MetaenlaceCitaClinica.Repository
         // Repo.    Listar Pacientes
         public async Task<IEnumerable<Paciente>> ObtenerTodos()
         {
-            return await _pacienteSet.ToListAsync();
+            return await _pacienteSet
+                .Include(p => p.Citas)
+                    .ThenInclude(c => c.Diagnostico)
+                .ToListAsync();
         }
     }
 }

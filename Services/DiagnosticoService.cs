@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
+using MetaenlaceCitaClinica.Models.DTOs;
 using MetaenlaceCitaClinica.Models.Entity;
 using MetaenlaceCitaClinica.Repository;
 using MetaenlaceCitaClinica.Services.Impl;
@@ -20,11 +20,13 @@ namespace MetaenlaceCitaClinica.Services
         // Serv.        Actualizar Diagnostico
         public async Task ActualizarDiagnostico(int idDiagnostico, DiagnosticoDTO diagnostico)
         {
-            var diagnosticoExistente = await _unitOfWork.Diagnosticos.ObtenerIdDiagnostico(idDiagnostico) ?? throw new ArgumentException("El diagnostico no existe");
-            // Actualizar las propiedades del diagnostico
+            var diagnosticoExistente = await _unitOfWork.Diagnosticos.ObtenerIdDiagnostico(idDiagnostico) ?? throw new ArgumentException("El diagnóstico no existe");
+
+            // Actualizar las propiedades del diagnóstico
             diagnosticoExistente.ValoracionEspecialista = diagnostico.ValoracionEspecialista;
             diagnosticoExistente.Enfermedad = diagnostico.Enfermedad;
-            diagnosticoExistente.CitaID = diagnostico.CitaID;
+
+            // Guardar los cambios en la base de datos
             await _unitOfWork.SaveChangesAsync();
         }
 

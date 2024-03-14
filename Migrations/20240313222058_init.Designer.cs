@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MetaenlaceCitaClinica.Migrations
 {
     [DbContext(typeof(CitaClinicaDataContext))]
-    [Migration("20240313122236_init")]
+    [Migration("20240313222058_init")]
     partial class init
     {
         /// <inheritdoc />

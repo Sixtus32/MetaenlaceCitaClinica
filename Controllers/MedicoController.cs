@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using MetaenlaceCitaClinica.Models.DTOs;
 using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
-using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
 using MetaenlaceCitaClinica.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +10,7 @@ namespace MetaenlaceCitaClinica.Controllers
     /// <summary>
     /// Controlador para gestionar operaciones relacionadas con médicos
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/v1/")]
     [ApiController]
     public class MedicoController : ControllerBase
     {
@@ -29,7 +29,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// Obtiene todos los médicos
         /// </summary>
         /// <returns>Una lista de médicos</returns>
-        [HttpGet("/medicos")]
+        [HttpGet("medicos")]
         [ProducesResponseType(typeof(IEnumerable<MedicoDTO>), 200)]
         public async Task<ActionResult<IEnumerable<MedicoDTO>>> ObtenerTodosMedicos()
         {
@@ -42,7 +42,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// </summary>
         /// <param name="idMedico">ID del médico a obtener</param>
         /// <returns>El médico encontrado</returns>
-        [HttpGet("/medico/{idMedico}")]
+        [HttpGet("medico/{idMedico}")]
         [ProducesResponseType(typeof(MedicoDTO), 200)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<MedicoDTO>> ObtenerMedicoPorId(int idMedico)
@@ -62,7 +62,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// </summary>
         /// <param name="medicoDTO">Datos del médico a crear</param>
         /// <returns>El médico creado</returns>
-        [HttpPost("/medico")]
+        [HttpPost("medico")]
         [ProducesResponseType(typeof(MedicoDTO), 201)]
         public async Task<ActionResult<MedicoDTO>> CrearMedico(MedicoRequestDTO medicoDTO)
         {
@@ -76,7 +76,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// <param name="idMedico">ID del médico a actualizar.</param>
         /// <param name="medicoDTO">Nuevos datos del médico.</param>
         /// <returns>Respuesta HTTP sin contenido.</returns>
-        [HttpPut("/medico/{idMedico}")]
+        [HttpPut("medico/{idMedico}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> ActualizarMedico(int idMedico, MedicoRequestDTO medicoDTO)
@@ -97,7 +97,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// </summary>
         /// <param name="idMedico">ID del médico a eliminar</param>
         /// <returns>Respuesta HTTP sin contenido.</returns>
-        [HttpDelete("/medico/{idMedico}")]
+        [HttpDelete("medico/{idMedico}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> EliminarMedico(int idMedico)

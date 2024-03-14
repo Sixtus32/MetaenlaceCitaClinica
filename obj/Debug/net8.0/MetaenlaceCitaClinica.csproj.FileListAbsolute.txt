@@ -136,3 +136,4 @@ C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClini
 C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\obj\Debug\net8.0\ref\MetaenlaceCitaClinica.dll
 C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\obj\Debug\net8.0\MetaenlaceCitaClinica.sourcelink.json

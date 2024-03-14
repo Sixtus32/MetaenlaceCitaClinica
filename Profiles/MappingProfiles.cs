@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MetaenlaceCitaClinica.Models.DTOs;
 using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
-using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
 using MetaenlaceCitaClinica.Models.Entity;
 
 namespace MetaenlaceCitaClinica.Profiles
@@ -13,6 +12,8 @@ namespace MetaenlaceCitaClinica.Profiles
             // PARA CITAS
             CreateMap<CitaDTO, Cita>();
             CreateMap<Cita, CitaDTO>();
+            CreateMap<CitaRequestDTO, Cita>();
+            CreateMap<Cita, CitaRequestDTO>();
 
             // PARA DIAGNOSTICOS
             CreateMap<DiagnosticoDTO, Diagnostico>();
@@ -29,9 +30,6 @@ namespace MetaenlaceCitaClinica.Profiles
             CreateMap<Paciente, PacienteDTO>();
             CreateMap<PacienteRequestDTO, Paciente>();
             CreateMap<Paciente, PacienteRequestDTO>();
-
-            CreateMap<UsuarioDTO, Usuario>();
-            CreateMap<Usuario, UsuarioDTO>();
         }
     }
 

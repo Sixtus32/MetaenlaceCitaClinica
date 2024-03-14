@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using MetaenlaceCitaClinica.Models.Data;
 using MetaenlaceCitaClinica.Models.Entity;
-using MetaenlaceCitaClinica.Repository.Impl;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 
-namespace MetaenlaceCitaClinica.Repository
+namespace MetaenlaceCitaClinica.Ignore
 {
     public class UsuarioRepository : IUsuarioRepository
     {
@@ -28,7 +27,7 @@ namespace MetaenlaceCitaClinica.Repository
         // Repo.    Crear usuario
         public async Task<Usuario> CrearUsuario(Usuario usuario)
         {
-            await  _usuarioSet.AddAsync(usuario);
+            await _usuarioSet.AddAsync(usuario);
             return usuario;
         }
 

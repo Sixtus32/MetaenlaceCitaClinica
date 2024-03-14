@@ -1,6 +1,6 @@
 ﻿using MetaenlaceCitaClinica.Models.Entity;
 
-namespace MetaenlaceCitaClinica.Repository.Impl
+namespace MetaenlaceCitaClinica.Ignore
 {
     public interface IUsuarioRepository
     {

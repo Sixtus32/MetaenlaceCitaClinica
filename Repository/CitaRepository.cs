@@ -34,14 +34,18 @@ namespace MetaenlaceCitaClinica.Repository
 
         public async Task<IEnumerable<Cita>> ObtenerCitas()
         {
-            return await _citaSet.ToListAsync();
+            return await _citaSet
+                .Include(navigationPropertyPath: c => c.Diagnostico)
+                .ToListAsync();
         }
 
         public async Task<Cita> ObtenerIdCita(int id)
         {
             try
             {
-                Cita? cita = await _citaSet.FindAsync(id);
+                Cita? cita = await _citaSet
+                    .Include(c => c.Diagnostico)
+                    .FirstOrDefaultAsync(c => c.CitaID == id);
                 return cita ?? throw new Exception($"No se encontró una cita con el ID {id}.");
             }
             catch (Exception ex)

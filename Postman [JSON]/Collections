@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "57cbe133-e259-4a9a-a792-6b4cded54b36",
+		"name": "MetaenlaceCitaClinica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21304392",
+		"_collection_link": "https://lunar-star-770623.postman.co/workspace/Team-Workspace~8c89d1b7-0a2f-48fc-8eaa-3d1cd3464637/collection/21304392-57cbe133-e259-4a9a-a792-6b4cded54b36?action=share&source=collection_link&creator=21304392"
+	},
+	"item": [
+		{
+			"name": "Pacientes Collections",
+			"item": [
+				{
+					"name": "http://localhost:5062/api/v1/pacientes [Listar Pacientes]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/pacientes"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/paciente/1 [Obtener Paciente Por Id]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/paciente/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/paciente/1 [Actualizar Paciente]",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nss\": \"1234567890\",\r\n    \"numTarjeta\": \"9876543210\",\r\n    \"telefono\": \"555-123-4567\",\r\n    \"direccion\": \"Calle Principal 123\",\r\n    \"citas\": [],\r\n    \"nombre\": \"Juan Antonio\",\r\n    \"apellidos\": \"Martínez\",\r\n    \"usuarioNom\": \"juanito123\",\r\n    \"clave\": \"contraseña123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5062/api/v1/paciente/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/paciente/1  [Eliminar Paciente]",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/paciente/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/paciente [Crear Paciente]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Andrés\",\r\n  \"apellidos\": \"Inesta\",\r\n  \"usuarioNom\": \"inestarazo\",\r\n  \"clave\": \"66666669\",\r\n  \"nss\": \"30-32347247\",\r\n  \"numTarjeta\": \"4453535453\",\r\n  \"telefono\": \"678 389 343\",\r\n  \"direccion\": \"C/ BarzaBarza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5062/api/v1/paciente"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medicos Collections",
+			"item": [
+				{
+					"name": "http://localhost:5062/api/v1/medicos [Listar Medicos]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/medicos"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/medico/1 [Obtener Medico Por Id]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/medico/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/medico/1 [Actualizar Datos Medico]",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Emily\",\r\n  \"apellidos\": \"Johnson & Johnson\",\r\n  \"usuarioNom\": \"@emilyj\",\r\n  \"clave\": \"password123\",\r\n  \"numColegiado\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5062/api/v1/medico/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/medico [Crear Medico]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Carlota\",\r\n  \"apellidos\": \"Ramidez\",\r\n  \"usuarioNom\": \"rammlota\",\r\n  \"clave\": \"897943\",\r\n  \"numColegiado\": \"68-3729347239\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5062/api/v1/medico"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/medico/6 [Eliminar Medico]",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/medico/6"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Citas Collections",
+			"item": [
+				{
+					"name": "http://localhost:5062/api/v1/cita/1 [Obtener Cita Por Id]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/cita/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/citas [Listar Citas]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/citas"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/cita/1 [Actualizar Cita]",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fechaHora\": \"2024-03-18T09:47:41.774Z\",\r\n  \"motivoCita\": \"Consulta de rutina\",\r\n  \"attribute11\": 68888888,\r\n  \"pacienteID\": 3,\r\n  \"medicoID\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5062/api/v1/cita/1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/cita [Crear Cita]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fechaHora\": \"2024-03-15T09:54:02.008Z\",\r\n  \"motivoCita\": \"Corazón Roto\",\r\n  \"attribute11\": 759347,\r\n  \"pacienteID\": 2,\r\n  \"medicoID\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5062/api/v1/cita"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/cita/5 [Eliminar Cita]",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/cita/5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Diagnosticos Collections",
+			"item": [
+				{
+					"name": "http://localhost:5062/api/v1/diagnosticos [Listar Diagnosticos]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/diagnosticos"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/diagnostico/4 [Obtener Diagnostico Por Id]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/diagnostico/4"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/diagnostico [Crear Diagnostico]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"valoracionEspecialista\": \"Embarazo\",\r\n  \"enfermedad\": \"Vomitos Excesivos\",\r\n  \"citaID\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5062/api/v1/diagnostico"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/diagnostico/4 [Actualizar Diagnostico]",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valoracionEspecialista\": \"La cosa esta muy mal\",\r\n    \"enfermedad\": \"Bailarin Salton agudo\",\r\n    \"citaID\": 1\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5062/api/v1/diagnostico/4"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5062/api/v1/diagnostico/4 [Eliminar Diagnostico]",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5062/api/v1/diagnostico/4"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

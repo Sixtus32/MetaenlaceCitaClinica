@@ -1,4 +1,5 @@
-﻿using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
+﻿using MetaenlaceCitaClinica.Models.DTOs;
+using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
 using MetaenlaceCitaClinica.Models.Entity;
 
 namespace MetaenlaceCitaClinica.Services.Impl
@@ -7,8 +8,8 @@ namespace MetaenlaceCitaClinica.Services.Impl
     {
         Task<CitaDTO> ObtenerCitaPorId(int idCita);
         Task<IEnumerable<CitaDTO>> ObtenerTodosCitas();
-        Task<CitaDTO> CrearCita(CitaDTO cita);
-        Task ActualizarCita(int idCita, CitaDTO cita);
+        Task<CitaDTO> CrearCita(CitaRequestDTO cita);
+        Task ActualizarCita(int idCita, CitaRequestDTO cita);
         Task EliminarCita(int idCita);
     }
 }

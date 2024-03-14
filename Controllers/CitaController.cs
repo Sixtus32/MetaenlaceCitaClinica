@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
+using MetaenlaceCitaClinica.Models.DTOs;
+using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
 using MetaenlaceCitaClinica.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +10,7 @@ namespace MetaenlaceCitaClinica.Controllers
     /// <summary>
     /// Controlador para gestionar operaciones relacionadas con citas
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/v1/")]
     [ApiController]
     public class CitaController : ControllerBase
     {
@@ -28,12 +29,26 @@ namespace MetaenlaceCitaClinica.Controllers
         /// Obtiene todas las citas
         /// </summary>
         /// <returns>Una lista de citas</returns>
-        [HttpGet("/citas")]
+        [HttpGet("citas")]
         [ProducesResponseType(typeof(IEnumerable<CitaDTO>), 200)]
+        [ProducesResponseType(500)]
         public async Task<ActionResult<IEnumerable<CitaDTO>>> ObtenerTodasCitas()
         {
-            var citas = await _citaService.ObtenerTodosCitas();
-            return Ok(citas);
+            try
+            {
+                var citas = await _citaService.ObtenerTodosCitas();
+
+                if (citas == null || !citas.Any())
+                {
+                    return NotFound("No se encontraron citas.");
+                }
+
+                return Ok(citas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error al obtener citas: " + ex.Message);
+            }
         }
 
         /// <summary>
@@ -41,29 +56,38 @@ namespace MetaenlaceCitaClinica.Controllers
         /// </summary>
         /// <param name="idCita">ID de la cita a obtener</param>
         /// <returns>La cita encontrada</returns>
-        [HttpGet("/cita/{idCita}")]
+        [HttpGet("cita/{idCita}")]
         [ProducesResponseType(typeof(CitaDTO), 200)]
         [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         public async Task<ActionResult<CitaDTO>> ObtenerCitaPorId(int idCita)
         {
-            var cita = await _citaService.ObtenerCitaPorId(idCita);
-
-            if (cita == null)
+            try
             {
-                return NotFound();
-            }
+                var cita = await _citaService.ObtenerCitaPorId(idCita);
 
-            return Ok(cita);
+                if (cita == null)
+                {
+                    return NotFound("No se encontró una cita con el ID proporcionado.");
+                }
+
+                return Ok(cita);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error al obtener la cita: " + ex.Message);
+            }
         }
+
 
         /// <summary>
         /// Crea una nueva cita
         /// </summary>
         /// <param name="citaDTO">Datos de la cita a crear</param>
         /// <returns>La cita creada</returns>
-        [HttpPost("/cita")]
+        [HttpPost("cita")]
         [ProducesResponseType(typeof(CitaDTO), 201)]
-        public async Task<ActionResult<CitaDTO>> CrearCita(CitaDTO citaDTO)
+        public async Task<ActionResult<CitaDTO>> CrearCita(CitaRequestDTO citaDTO)
         {
             var nuevaCita = await _citaService.CrearCita(citaDTO);
             return CreatedAtAction(nameof(ObtenerCitaPorId), new { idCita = nuevaCita.CitaID }, nuevaCita);
@@ -75,10 +99,10 @@ namespace MetaenlaceCitaClinica.Controllers
         /// <param name="idCita">ID de la cita a actualizar.</param>
         /// <param name="citaDTO">Nuevos datos de la cita.</param>
         /// <returns>Respuesta HTTP sin contenido.</returns>
-        [HttpPut("/cita/{idCita}")]
+        [HttpPut("cita/{idCita}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> ActualizarCita(int idCita, CitaDTO citaDTO)
+        public async Task<IActionResult> ActualizarCita(int idCita, CitaRequestDTO citaDTO)
         {
             try
             {
@@ -96,7 +120,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// </summary>
         /// <param name="idCita">ID de la cita a eliminar</param>
         /// <returns>Respuesta HTTP sin contenido.</returns>
-        [HttpDelete("/cita/{idCita}")]
+        [HttpDelete("cita/{idCita}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> EliminarCita(int idCita)

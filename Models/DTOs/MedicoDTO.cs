@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace MetaenlaceCitaClinica.Models.DTOs.ResponseDTO
+namespace MetaenlaceCitaClinica.Models.DTOs
 {
     public class MedicoDTO : UsuarioDTO
     {

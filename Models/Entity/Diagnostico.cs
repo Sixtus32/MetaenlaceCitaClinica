@@ -18,8 +18,10 @@ namespace MetaenlaceCitaClinica.Models.Entity
         [Display(Name = "ENFERMEDAD")]
         public string? Enfermedad { get; set; }
 
-        // la cita del diagnóstico
+        // La cita del diagnóstico
         public int CitaID { get; set; }
+
+        // Propiedad de navegación
         [ForeignKey("CitaID")]
         public virtual Cita? Cita { get; set; }
     }

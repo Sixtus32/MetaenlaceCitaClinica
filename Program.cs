@@ -4,6 +4,7 @@ using MetaenlaceCitaClinica.Repository;
 using MetaenlaceCitaClinica.Services;
 using Microsoft.EntityFrameworkCore;
 using MetaenlaceCitaClinica.Services.Impl;
+using MetaenlaceCitaClinica.Ignore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +17,8 @@ builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(UnitOfWork));
 
-builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-builder.Services.AddScoped(typeof(UsuarioService));
+/*builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped(typeof(UsuarioService));*/
 
 builder.Services.AddScoped<IPacienteService, PacienteService>();
 builder.Services.AddScoped(typeof(PacienteService));

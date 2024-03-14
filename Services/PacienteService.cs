@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using MetaenlaceCitaClinica.Models.DTOs;
 using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
-using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
 using MetaenlaceCitaClinica.Models.Entity;
 using MetaenlaceCitaClinica.Repository;
 using MetaenlaceCitaClinica.Services.Impl;

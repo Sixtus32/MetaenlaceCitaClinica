@@ -24,8 +24,19 @@ namespace MetaenlaceCitaClinica.Repository
 
         public async Task<Diagnostico> CrearDiagnostico(Diagnostico diagnostico)
         {
-            await _diagnosticoSet.AddAsync(diagnostico);
-            return diagnostico;
+            // Verificar si ya existe un diagnóstico con el mismo CitaID
+            var existingDiagnostico = await _diagnosticoSet.FirstOrDefaultAsync(d => d.CitaID == diagnostico.CitaID);
+            if (existingDiagnostico != null)
+            {
+                // Si ya existe un diagnóstico con el mismo CitaID, retornar ese diagnóstico
+                return existingDiagnostico;
+            }
+            else
+            {
+                // Si no existe un diagnóstico con el mismo CitaID, agregar el nuevo diagnóstico
+                await _diagnosticoSet.AddAsync(diagnostico);
+                return diagnostico;
+            }
         }
 
         public async Task EliminarDiagnostico(Diagnostico diagnostico)

@@ -4,14 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MetaenlaceCitaClinica.Services.Impl;
-using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
+using MetaenlaceCitaClinica.Models.DTOs;
 
 namespace MetaenlaceCitaClinica.Controllers
 {
     /// <summary>
     /// Controlador para gestionar operaciones relacionadas con diagnósticos médicos.
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/v1/")]
     [ApiController]
     public class DiagnosticoController : ControllerBase
     {
@@ -30,7 +30,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// Obtiene todos los diagnósticos.
         /// </summary>
         /// <returns>Una lista de diagnósticos</returns>
-        [HttpGet]
+        [HttpGet("diagnosticos")]
         [ProducesResponseType(typeof(IEnumerable<DiagnosticoDTO>), 200)]
         public async Task<ActionResult<IEnumerable<DiagnosticoDTO>>> ObtenerTodosDiagnosticos()
         {
@@ -43,7 +43,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// </summary>
         /// <param name="idDiagnostico">ID del diagnóstico a obtener</param>
         /// <returns>El diagnóstico encontrado</returns>
-        [HttpGet("{idDiagnostico}")]
+        [HttpGet("diagnostico/{idDiagnostico}")]
         [ProducesResponseType(typeof(DiagnosticoDTO), 200)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<DiagnosticoDTO>> ObtenerDiagnosticoPorId(int idDiagnostico)
@@ -61,7 +61,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// </summary>
         /// <param name="diagnosticoDTO">Datos del diagnóstico a crear</param>
         /// <returns>El diagnóstico creado</returns>
-        [HttpPost]
+        [HttpPost("diagnostico")]
         [ProducesResponseType(typeof(DiagnosticoDTO), 201)]
         public async Task<ActionResult<DiagnosticoDTO>> CrearDiagnostico(DiagnosticoDTO diagnosticoDTO)
         {
@@ -75,7 +75,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// <param name="idDiagnostico">ID del diagnóstico a actualizar.</param>
         /// <param name="diagnosticoDTO">Nuevos datos del diagnóstico.</param>
         /// <returns>Respuesta HTTP sin contenido.</returns>
-        [HttpPut("{idDiagnostico}")]
+        [HttpPut("diagnostico/{idDiagnostico}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> ActualizarDiagnostico(int idDiagnostico, DiagnosticoDTO diagnosticoDTO)
@@ -96,7 +96,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// </summary>
         /// <param name="idDiagnostico">ID del diagnóstico a eliminar</param>
         /// <returns>Respuesta HTTP sin contenido.</returns>
-        [HttpDelete("{idDiagnostico}")]
+        [HttpDelete("diagnostico/{idDiagnostico}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> EliminarDiagnostico(int idDiagnostico)

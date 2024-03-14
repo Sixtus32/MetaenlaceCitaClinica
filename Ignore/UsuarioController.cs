@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace MetaenlaceCitaClinica.Controllers
+/*namespace MetaenlaceCitaClinica.Controllers
 {
     /// <summary>
     /// Controlador para gestionar operaciones relacionadas con usuarios
@@ -121,3 +121,4 @@ namespace MetaenlaceCitaClinica.Controllers
         }
     }
 }
+*/

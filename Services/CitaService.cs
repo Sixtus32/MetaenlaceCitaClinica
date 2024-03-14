@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using MetaenlaceCitaClinica.Models.DTOs.ResponseDTO;
+using MetaenlaceCitaClinica.Models.DTOs;
+using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
 using MetaenlaceCitaClinica.Models.Entity;
 using MetaenlaceCitaClinica.Repository;
 using MetaenlaceCitaClinica.Services.Impl;
@@ -18,11 +19,11 @@ namespace MetaenlaceCitaClinica.Services
         }
 
         // Serv.        Actualizar Cita
-        public async Task ActualizarCita(int idCita, CitaDTO cita)
+        public async Task ActualizarCita(int idCita, CitaRequestDTO cita)
         {
             var citaExistente = await _unitOfWork.Citas.ObtenerIdCita(idCita) ?? throw new ArgumentException("La cita no existe");
             // Actualizar las propiedades del usuario existente con los nuevos valores
-            citaExistente.CitaID = cita.CitaID;
+            citaExistente.FechaHora = cita.FechaHora;
             citaExistente.MotivoCita = cita.MotivoCita;
             citaExistente.Attribute11 = cita.Attribute11;
             citaExistente.PacienteID = cita.PacienteID;
@@ -31,12 +32,34 @@ namespace MetaenlaceCitaClinica.Services
         }
 
         // Serv.        Crear Crear
-        public async Task<CitaDTO> CrearCita(CitaDTO cita)
+        public async Task<CitaDTO> CrearCita(CitaRequestDTO cita)
         {
-            var nuevoCita = _mapper.Map<Cita>(cita);
-            await _unitOfWork.Citas.CrearCita(nuevoCita);
-            await _unitOfWork.SaveChangesAsync();
-            return _mapper.Map<CitaDTO>(nuevoCita);
+            try
+            {
+                // Verifica si el paciente existe antes de crear la cita
+                var pacienteExistente = await _unitOfWork.Pacientes.ObtenerId(cita.PacienteID);
+                if (pacienteExistente == null)
+                {
+                    throw new Exception($"No se encontró un paciente con el ID {cita.PacienteID}.");
+                }
+
+                // Mapea la solicitud de cita a una entidad Cita
+                var nuevaCita = _mapper.Map<Cita>(cita);
+
+                // Asigna el paciente a la cita
+                nuevaCita.Paciente = pacienteExistente;
+
+                // Crea la cita en la base de datos
+                await _unitOfWork.Citas.CrearCita(nuevaCita);
+                await _unitOfWork.SaveChangesAsync();
+
+                // Mapea la entidad Cita creada a un DTO y devuélvela
+                return _mapper.Map<CitaDTO>(nuevaCita);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al crear la cita: " + ex.Message);
+            }
         }
 
         // Serv.        Eliminar Cita
