@@ -137,3 +137,7 @@ C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClini
 C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\obj\Debug\net8.0\MetaenlaceCitaClinica.sourcelink.json
+C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\bin\Debug\net8.0\Postman [JSON]\Citas\listar_citas.json
+C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\bin\Debug\net8.0\Postman [JSON]\Diagnosticos\listar_diagnosticos.json
+C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\bin\Debug\net8.0\Postman [JSON]\Medicos\listar_medicos.json
+C:\Users\sixtu\source\repos\Metaenlace\MetaenlaceCitaClinica\MetaenlaceCitaClinica\bin\Debug\net8.0\Postman [JSON]\Pacientes\listar_pacientes.json

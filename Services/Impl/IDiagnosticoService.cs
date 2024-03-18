@@ -1,4 +1,5 @@
 ﻿using MetaenlaceCitaClinica.Models.DTOs;
+using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
 using MetaenlaceCitaClinica.Models.Entity;
 
 namespace MetaenlaceCitaClinica.Services.Impl
@@ -7,8 +8,8 @@ namespace MetaenlaceCitaClinica.Services.Impl
     {
         Task<DiagnosticoDTO> ObtenerDiagnosticoPorId(int idDiagnostico);
         Task<IEnumerable<DiagnosticoDTO>> ObtenerTodosDiagnostico();
-        Task<DiagnosticoDTO> CrearDiagnostico(DiagnosticoDTO diagnostico);
-        Task ActualizarDiagnostico(int idDiagnostico, DiagnosticoDTO diagnostico);
+        Task<DiagnosticoDTO> CrearDiagnostico(DiagnosticoRequestDTO diagnostico);
+        Task ActualizarDiagnostico(int idDiagnostico, DiagnosticoRequestDTO diagnostico);
         Task EliminarDiagnostico(int idDiagnostico);
     }
 }

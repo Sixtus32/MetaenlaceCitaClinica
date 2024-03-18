@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MetaenlaceCitaClinica")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0a1fe3bbce55ab84f9cdafd748f8e3d2682e373")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32b756e40824899d588a7a02964c318ec0b72b48")]
 [assembly: System.Reflection.AssemblyProductAttribute("MetaenlaceCitaClinica")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MetaenlaceCitaClinica")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

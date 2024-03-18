@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MetaenlaceCitaClinica.Services.Impl;
 using MetaenlaceCitaClinica.Models.DTOs;
+using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
 
 namespace MetaenlaceCitaClinica.Controllers
 {
@@ -63,7 +64,7 @@ namespace MetaenlaceCitaClinica.Controllers
         /// <returns>El diagnóstico creado</returns>
         [HttpPost("diagnostico")]
         [ProducesResponseType(typeof(DiagnosticoDTO), 201)]
-        public async Task<ActionResult<DiagnosticoDTO>> CrearDiagnostico(DiagnosticoDTO diagnosticoDTO)
+        public async Task<ActionResult<DiagnosticoDTO>> CrearDiagnostico(DiagnosticoRequestDTO diagnosticoDTO)
         {
             var nuevoDiagnostico = await _diagnosticoService.CrearDiagnostico(diagnosticoDTO);
             return CreatedAtAction(nameof(ObtenerDiagnosticoPorId), new { idDiagnostico = nuevoDiagnostico.DiagnosticoID }, nuevoDiagnostico);
@@ -78,7 +79,7 @@ namespace MetaenlaceCitaClinica.Controllers
         [HttpPut("diagnostico/{idDiagnostico}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> ActualizarDiagnostico(int idDiagnostico, DiagnosticoDTO diagnosticoDTO)
+        public async Task<IActionResult> ActualizarDiagnostico(int idDiagnostico, DiagnosticoRequestDTO diagnosticoDTO)
         {
             try
             {

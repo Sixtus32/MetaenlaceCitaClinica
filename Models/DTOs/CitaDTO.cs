@@ -4,7 +4,7 @@ namespace MetaenlaceCitaClinica.Models.DTOs
 {
     public class CitaDTO
     {
-        [JsonIgnore]
+        //[JsonIgnore]
         public int CitaID { get; set; }
         public DateTime? FechaHora { get; set; }
         public string? MotivoCita { get; set; }

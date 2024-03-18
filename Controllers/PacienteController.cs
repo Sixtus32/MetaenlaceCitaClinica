@@ -68,7 +68,7 @@ namespace MetaenlaceCitaClinica.Controllers
         public async Task<ActionResult<PacienteDTO>> CrearPaciente(PacienteRequestDTO pacienteDTO)
         {
             var nuevoPaciente = await _pacienteService.CrearPaciente(pacienteDTO);
-            return CreatedAtAction(nameof(ObtenerPacientePorId), new { idPaciente = nuevoPaciente.PacienteID }, nuevoPaciente);
+            return CreatedAtAction(nameof(ObtenerPacientePorId), new { idPaciente = nuevoPaciente.ID }, nuevoPaciente);
         }
 
 

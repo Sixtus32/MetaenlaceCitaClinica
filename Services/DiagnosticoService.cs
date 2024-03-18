@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MetaenlaceCitaClinica.Models.DTOs;
+using MetaenlaceCitaClinica.Models.DTOs.RequestDTO;
 using MetaenlaceCitaClinica.Models.Entity;
 using MetaenlaceCitaClinica.Repository;
 using MetaenlaceCitaClinica.Services.Impl;
@@ -18,7 +19,7 @@ namespace MetaenlaceCitaClinica.Services
         }
 
         // Serv.        Actualizar Diagnostico
-        public async Task ActualizarDiagnostico(int idDiagnostico, DiagnosticoDTO diagnostico)
+        public async Task ActualizarDiagnostico(int idDiagnostico, DiagnosticoRequestDTO diagnostico)
         {
             var diagnosticoExistente = await _unitOfWork.Diagnosticos.ObtenerIdDiagnostico(idDiagnostico) ?? throw new ArgumentException("El diagnóstico no existe");
 
@@ -31,7 +32,7 @@ namespace MetaenlaceCitaClinica.Services
         }
 
         // Serv.        Crear Diagnostico
-        public async Task<DiagnosticoDTO> CrearDiagnostico(DiagnosticoDTO diagnostico)
+        public async Task<DiagnosticoDTO> CrearDiagnostico(DiagnosticoRequestDTO diagnostico)
         {
             var nuevoDiagnostico = _mapper.Map<Diagnostico>(diagnostico);
             await _unitOfWork.Diagnosticos.CrearDiagnostico(nuevoDiagnostico);

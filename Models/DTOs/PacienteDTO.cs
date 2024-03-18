@@ -6,8 +6,8 @@ namespace MetaenlaceCitaClinica.Models.DTOs
 {
     public class PacienteDTO : UsuarioDTO
     {
-        [JsonIgnore]
-        public int PacienteID { get; set; }
+        //[JsonIgnore]
+        public int ID { get; set; }
 
         public string? NSS { get; set; }
 

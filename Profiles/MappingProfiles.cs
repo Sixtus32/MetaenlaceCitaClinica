@@ -18,17 +18,21 @@ namespace MetaenlaceCitaClinica.Profiles
             // PARA DIAGNOSTICOS
             CreateMap<DiagnosticoDTO, Diagnostico>();
             CreateMap<Diagnostico, DiagnosticoDTO>();
+            CreateMap<DiagnosticoRequestDTO, Cita>();
+            CreateMap<Cita, DiagnosticoRequestDTO>();
 
             // PARA MEDICO
-            CreateMap<MedicoDTO, Medico>();
-            CreateMap<Medico, MedicoDTO>();
-            CreateMap<MedicoRequestDTO, Medico>();
+            CreateMap<Medico, MedicoDTO>()
+                .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.UsuarioID)) // Mapea el UsuarioID al ID del DTO
+                .ReverseMap();
+            CreateMap<MedicoRequestDTO, Medico>().ReverseMap();
             CreateMap<Medico, MedicoRequestDTO>();
 
             // PARA PACIENTE
-            CreateMap<PacienteDTO, Paciente>();
-            CreateMap<Paciente, PacienteDTO>();
-            CreateMap<PacienteRequestDTO, Paciente>();
+            CreateMap<Paciente, PacienteDTO>()
+                .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.UsuarioID)) // Mapea el UsuarioID al ID del DTO
+                .ReverseMap();
+            CreateMap<PacienteRequestDTO, Paciente>().ReverseMap();
             CreateMap<Paciente, PacienteRequestDTO>();
         }
     }

@@ -4,7 +4,7 @@ namespace MetaenlaceCitaClinica.Models.DTOs
 {
     public class DiagnosticoDTO
     {
-        [JsonIgnore]
+        //[JsonIgnore]
         public int DiagnosticoID { get; set; }
         public string? ValoracionEspecialista { get; set; }
         public string? Enfermedad { get; set; }

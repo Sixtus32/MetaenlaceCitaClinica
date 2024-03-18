@@ -1,12 +1,21 @@
-using MetaenlaceCitaClinica.Profiles;
 using MetaenlaceCitaClinica.Models.Data;
+using MetaenlaceCitaClinica.Profiles;
 using MetaenlaceCitaClinica.Repository;
+using MetaenlaceCitaClinica.Services.Impl;
 using MetaenlaceCitaClinica.Services;
 using Microsoft.EntityFrameworkCore;
-using MetaenlaceCitaClinica.Services.Impl;
-using MetaenlaceCitaClinica.Ignore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Para trabajar con la API y evitar CORS
+builder.Services.AddCors(options =>
+    options.AddPolicy("AllowOrigin", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    })
+);
 
 // Configuración de AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -53,8 +62,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
+// Cambio de puerto aquí
+var port = 8093;
+
+app.UseCors("AllowOrigin"); // Aplica la política CORS.
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Run("http://localhost:" + port.ToString());
